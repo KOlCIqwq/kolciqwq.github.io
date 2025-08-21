@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Portfolio</title>
+  <meta name="color-scheme" content="dark" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="brand">KOlCI <small>• Portfolio</small></div>
+      <button class="menu-toggle" aria-label="Toggle menu">Menu</button>
+      <nav class="nav-links" aria-label="Primary">
+        <a data-nav href="#home" class="active">Home</a>
+        <a data-nav href="#about">About</a>
+        <a data-nav href="#projects">Projects</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <!-- Home / Hero -->
+    <section id="home">
+      <div class="container grid">
+        <div class="col-7">
+          <div class="hero-card" data-reveal>
+            <h1>Hello, I’m Weijie</h1>
+            <p class="lead"></p>
+            <a class="btn" href="#projects">View Projects →</a>
+          </div>
+        </div>
+        <div class="col-5" style="display:grid; place-items:center;">
+          <div class="avatar" data-reveal></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Languages & Tools -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">Skills</div>
+          <h2>Languages & Tools</h2>
+        </div>
+
+        <div class="skill-icons">
+            <ul>
+                <li>
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
+                </li>
+                <li>
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+                </li>
+                <li>
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                </li>
+                <li>
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+                </li>
+                <li>
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+                </li>
+            </ul>
+
+            <ul aria-hidden="true">
+                <li>
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">
+                </li>
+                <li>
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+                </li>
+                <li>
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+                </li>
+                <li>
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+                </li>
+                <li>
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+                </li>
+            </ul>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">About</div>
+          <h2>Who I am</h2>
+        </div>
+        <div class="card" data-reveal>
+          <p>
+            Short bio goes here. Explain who you are, what you do, and what you enjoy working on.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">Projects</div>
+          <h2>Selected Work</h2>
+        </div>
+
+        <div class="project-grid">
+          <article class="project card" data-reveal>
+            <a href="#">
+              <div class="thumb"></div>
+              <h3>Project One</h3>
+              <p class="subtle">Description of project one.</p>
+            </a>
+          </article>
+
+          <article class="project card" data-reveal>
+            <a href="#">
+              <div class="thumb"></div>
+              <h3>Project Two</h3>
+              <p class="subtle">Description of project two.</p>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <span class="subtle">© 2025 Your Name</span>
+      <span class="subtle">Built with HTML • CSS • JS</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
