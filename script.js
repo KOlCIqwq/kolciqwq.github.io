@@ -74,3 +74,119 @@ if (document.readyState === 'loading') {
 } else {
   initInfiniteScroll();
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const modalOverlay = document.getElementById('modal-overlay');
+  const modalContent = document.getElementById('modal-content');
+  const modalBody = document.getElementById('modal-body');
+  const closeBtn = document.getElementById('modal-close-btn');
+  
+  // Function to load markdown content
+  async function loadMarkdownContent(filename) {
+    try {
+      const response = await fetch(`/blog/${filename}.md`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const markdown = await response.text();
+      return marked.parse(markdown);
+    } catch (error) {
+      console.error('Error loading markdown:', error);
+      return `
+        <div class="error-message">
+          <h3>Content Not Found</h3>
+          <p>Sorry, the project details could not be loaded at this time.</p>
+        </div>
+      `;
+    }
+  }
+
+  // Handle modal opening
+  document.querySelectorAll('[data-modal-id]').forEach(button => {
+    button.addEventListener('click', async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const modalId = button.getAttribute('data-modal-id');
+      const projectCard = button.closest('.project');
+      
+      if (!modalId || !projectCard) return;
+      
+      // Get the position and dimensions of the clicked card
+      const cardRect = projectCard.getBoundingClientRect();
+      
+      // Calculate final centered position (relative to viewport)
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      const finalWidth = Math.min(viewportWidth * 0.9, 900);
+      const finalHeight = Math.min(viewportHeight * 0.85, 800);
+      const finalTop = (viewportHeight - finalHeight) / 2;
+      const finalLeft = (viewportWidth - finalWidth) / 2;
+      
+      // Set initial position and size to match the card (relative to viewport)
+      modalContent.style.position = 'fixed';
+      modalContent.style.top = `${cardRect.top}px`;
+      modalContent.style.left = `${cardRect.left}px`;
+      modalContent.style.width = `${cardRect.width}px`;
+      modalContent.style.height = `${cardRect.height}px`;
+      modalContent.style.transform = 'scale(1)';
+      modalContent.style.visibility = 'visible';
+      modalContent.style.opacity = '1';
+      modalContent.style.overflow = 'hidden';
+      
+      // Load markdown content
+      const content = await loadMarkdownContent(modalId);
+      modalBody.innerHTML = `<div class="project-details">${content}</div>`;
+      
+      // Show overlay
+      modalOverlay.classList.add('active');
+      
+      // Trigger the animation to final position
+      setTimeout(() => {
+        modalContent.style.top = `${finalTop}px`;
+        modalContent.style.left = `${finalLeft}px`;
+        modalContent.style.width = `${finalWidth}px`;
+        modalContent.style.height = `${finalHeight}px`;
+        modalContent.style.overflow = 'auto';
+        modalContent.style.padding = '40px';
+      }, 50);
+      
+      // Prevent body scroll
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  // Handle modal closing
+  function closeModal() {
+    modalContent.style.overflow = 'hidden';
+    modalContent.style.padding = '18px';
+    modalOverlay.classList.remove('active');
+    
+    // Re-enable body scroll
+    document.body.style.overflow = '';
+    
+    // Reset modal content after animation completes
+    setTimeout(() => {
+      modalContent.style.visibility = 'hidden';
+      modalContent.style.opacity = '0';
+      modalBody.innerHTML = '';
+    }, 400);
+  }
+
+  // Close button event
+  closeBtn.addEventListener('click', closeModal);
+
+  // Click outside to close
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) {
+      closeModal();
+    }
+  });
+
+  // ESC key to close
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+      closeModal();
+    }
+  });
+});
