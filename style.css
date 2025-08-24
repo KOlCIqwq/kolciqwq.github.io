@@ -408,17 +408,9 @@ footer .container{ display:flex; justify-content:space-between; gap:12px; flex-w
 .card li:last-child {
     margin-bottom: 0;
 }
-
-.card a {
-    color: #60a5fa;
-    text-decoration: none;
-    transition: color 0.2s;
+.card a h3{
+    color: #60a5fa
 }
-
-.card a:hover {
-    color: #93c5fd;
-}
-
 /* Bio content animations */
 .bio-content {
     overflow: hidden;
@@ -458,10 +450,6 @@ footer .container{ display:flex; justify-content:space-between; gap:12px; flex-w
     display: flex;
     width: 120px;
     height: 32px;
-}
-
-.bio-toggle:hover {
-    border-color: #60a5fa;
 }
 
 .toggle-option {
