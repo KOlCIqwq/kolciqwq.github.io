@@ -117,20 +117,43 @@
 
     <!-- About -->
     <section id="about">
-      <div class="container">
-        <div class="section-header">
-          <div class="eyebrow">About</div>
-          <h2>Who I am</h2>
+        <div class="container">
+            <div class="section-header">
+                <div class="eyebrow">About</div>
+                <h2>Who I am</h2>
+            </div>
+            <div class="card" data-reveal>
+                <div class="card-header">
+                    <div class="static-info">
+                        <p>My name is <strong>Weijie</strong>, I'm <strong>21 years old</strong> and based in <strong>Codognè, Italy</strong>.</p>
+                    </div>
+                    <div class="bio-toggle-container">
+                        <div class="bio-toggle" id="bioToggle">
+                            <div class="toggle-slider"></div>
+                            <div class="toggle-option short">Short</div>
+                            <div class="toggle-option long">Long</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bio-content bio-short" id="bioContent">
+                    <!-- Short Bio Content -->
+                    <ul class="bio-list bio-short-content" id="bioShort">
+                        <li>Currently studying for Bachelor's Degree in Internet of Things, Big Data, and Machine Learning at <a href="https://www.uniud.it/it">UniUD</a></li>
+                        <li>Experienced in Python, Java, Rust and Jupyter Notebook.</li>
+                        <li>Adept at problem-solving and collaborating in team environments.</li>
+                        <li>Enjoys hiking, photography, and exploring new technologies in free time.</li>
+                    </ul>
+                    
+                    <!-- Long Bio Content -->
+                    <ul class="bio-list bio-long-content" id="bioLong" style="display: none;">
+                        <li>Currently studying for Bachelor's Degree in Internet of Things, Big Data, and Machine Learning at <a href="https://www.uniud.it/it">UniUD</a></li>
+                        <li>Experienced in Python, Java, Rust and Jupyter Notebook.</li>
+                        <li>Adept at problem-solving and collaborating in team environments.</li>
+                        <li>Enjoys hiking, photography, and exploring new technologies in free time.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="card" data-reveal>
-          <ul>
-            <li>Currently studying for Bachelor's Degree in Internet of Things, Big Data, and Machine Learning at <a href = "https://www.uniud.it/it">UniUD</a></li>
-            <li>Experienced in Python, Java, Rust and Jupyter Notebook.</li>
-            <li>Adept at problem-solving and collaborating in team environments.</li>
-            <li>Enjoys hiking, photography, and exploring new technologies in free time.</li>
-          </ul>
-        </div>
-      </div>
     </section>
 
     <!-- Work Experience -->
@@ -163,19 +186,19 @@
 
         <div class="project-grid">
           <article class="project card" data-reveal>
-            <a href="#">
+            <a href="" data-modal-id="doof">
               <div class="thumb"></div>
               <h3>DOOF</h3>
               <p class="subtle">"DOOF is a smart application that makes it easy to track food, nutrients, calories, and more."</p>
               <ul class="project-links">
-                <a class="btn" href="" target="_blank">Get app →</a>
+                <a class="btn" href="https://github.com/KOlCIqwq/FoodScannerApp" target="_blank">Get app →</a>
                 <a class="btn" href="" data-modal-id="doof">Read More →</a>
               </ul>
             </a>
           </article>
 
           <article class="project card" data-reveal>
-            <a href="#">
+            <a href="" data-modal-id="sentiment-analysis">
               <div class="thumb"></div>
               <h3>Sentiment Analysis</h3>
               <p class="subtle">"A platform that delivers the latest news along with sentiment analysis to show whether it’s positive, negative, or neutral."</p>

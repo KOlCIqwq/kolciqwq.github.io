@@ -80,6 +80,34 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalContent = document.getElementById('modal-content');
   const modalBody = document.getElementById('modal-body');
   const closeBtn = document.getElementById('modal-close-btn');
+  let isModalOpen = false;
+  
+  // Function to calculate centered position
+  function calculateCenteredPosition() {
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    const finalWidth = Math.min(viewportWidth * 0.9, 900);
+    const finalHeight = Math.min(viewportHeight * 0.85, 800);
+    const finalTop = (viewportHeight - finalHeight) / 2;
+    const finalLeft = (viewportWidth - finalWidth) / 2;
+    
+    return { finalWidth, finalHeight, finalTop, finalLeft };
+  }
+  
+  // Function to update modal position (for resize events)
+  function updateModalPosition() {
+    if (!isModalOpen) return;
+    
+    const { finalWidth, finalHeight, finalTop, finalLeft } = calculateCenteredPosition();
+    
+    modalContent.style.top = `${finalTop}px`;
+    modalContent.style.left = `${finalLeft}px`;
+    modalContent.style.width = `${finalWidth}px`;
+    modalContent.style.height = `${finalHeight}px`;
+  }
+  
+  // Add resize listener
+  window.addEventListener('resize', updateModalPosition);
   
   // Function to load markdown content
   async function loadMarkdownContent(filename) {
@@ -115,13 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
       // Get the position and dimensions of the clicked card
       const cardRect = projectCard.getBoundingClientRect();
       
-      // Calculate final centered position (relative to viewport)
-      const viewportWidth = window.innerWidth;
-      const viewportHeight = window.innerHeight;
-      const finalWidth = Math.min(viewportWidth * 0.9, 900);
-      const finalHeight = Math.min(viewportHeight * 0.85, 800);
-      const finalTop = (viewportHeight - finalHeight) / 2;
-      const finalLeft = (viewportWidth - finalWidth) / 2;
+      // Calculate final centered position
+      const { finalWidth, finalHeight, finalTop, finalLeft } = calculateCenteredPosition();
       
       // Set initial position and size to match the card (relative to viewport)
       modalContent.style.position = 'fixed';
@@ -138,8 +161,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const content = await loadMarkdownContent(modalId);
       modalBody.innerHTML = `<div class="project-details">${content}</div>`;
       
-      // Show overlay
+      // Show overlay and set modal as open
       modalOverlay.classList.add('active');
+      isModalOpen = true;
       
       // Trigger the animation to final position
       setTimeout(() => {
@@ -158,6 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Handle modal closing
   function closeModal() {
+    isModalOpen = false;
     modalContent.style.overflow = 'hidden';
     modalContent.style.padding = '18px';
     modalOverlay.classList.remove('active');
@@ -190,3 +215,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+const bioContent = document.getElementById('bioContent');
+const bioShort = document.getElementById('bioShort');
+const bioLong = document.getElementById('bioLong');
+const bioToggle = document.getElementById('bioToggle');
+
+// State
+let isExpanded = false;
+
+// Functions
+function toggleBio() {
+    if (isExpanded) {
+        // Switch to short bio
+        bioLong.style.display = 'none';
+        bioShort.style.display = 'block';
+        bioContent.classList.remove('bio-long');
+        bioContent.classList.add('bio-short');
+        bioToggle.classList.remove('expanded');
+        isExpanded = false;
+    } else {
+        // Switch to long bio
+        bioShort.style.display = 'none';
+        bioLong.style.display = 'block';
+        bioContent.classList.remove('bio-short');
+        bioContent.classList.add('bio-long');
+        bioToggle.classList.add('expanded');
+        isExpanded = true;
+    }
+}
+
+// Event listeners
+bioToggle.addEventListener('click', toggleBio);
