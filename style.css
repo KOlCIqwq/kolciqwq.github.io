@@ -514,3 +514,10 @@ footer .container{ display:flex; justify-content:space-between; gap:12px; flex-w
         align-self: flex-end;
     }
 }
+
+.thumb img{
+    border-radius: 12px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
