@@ -6,7 +6,7 @@
 ---
 
 ## Why?
-Several years ago, I built a simple machine learning model to predict stock prices. As you might guess, it was unsuccessful. This failure prompted me to rethink what key factors influence stock prices. After some analysis, I realized the answer was right in front of me: the news, a medium developed centuries ago that remains relevant today.
+Several years ago, I built a simple machine learning model to predict stock prices. As you might guess, it was unsuccessful. This failure led me to rethink what key factors influence stock prices. After some analysis, I realized the answer was right in front of me: the news, a medium developed centuries ago that remains relevant today.
 
 This led to a new question: instead of predicting a precise stock value, why not try to determine the overall sentiment surrounding a company? This project was born from that idea.
 
