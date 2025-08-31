@@ -56,7 +56,9 @@ Another challenge was that the server would occasionally shut down due to inacti
 ---
 
 ## Information Retrieval
-My first thought was to use an API to fetch news. However, the free plans from various services offered either a very limited number of requests or provided delayed data. This limitation pushed me toward a different approach: web scraping. My initial attempts with libraries like `requests`, `BeautifulSoup4`, and `Selenium` were blocked.
+My first thought was to use an API to fetch news. However, the free plans from various services offered either a very limited number of requests or provided delayed data. This limitation pushed me toward a different approach: web scraping. My initial attempts with libraries like `requests`, `BeautifulSoup4`, and `Selenium` are not enough, because every site have some sort of scraping protection.
+
+To not analyze the same news, I decided to only scrape 1 site.
 
 Then, I discovered Playwright, a powerful library with a sub-library that bypasses simple bot detection. It worked. To be respectful of the news provider's servers, I limited my scraper to making only one request per hour.
 
