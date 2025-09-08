@@ -78,3 +78,7 @@ The final workflow is as follows:
 ---
 
 That's all. Thank you for reading.
+
+## 8/9/25 Update
+Moved from Render to Vercel, due to database shutdown
+Now all the queries will be stored in Supabase instead of Render Postgresql
